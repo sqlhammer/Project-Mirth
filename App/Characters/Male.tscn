@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/male/BODY_male.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Clothing/LEGS_pants_greenish.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Clothing/TORSO_chain_armor_torso.png" type="Texture" id=3]
+
+[node name="Male" type="Node2D"]
+position = Vector2( -7.62939e-05, 3.17236 )
+
+[node name="Man" type="Sprite" parent="."]
+position = Vector2( 0.353096, 0.250778 )
+scale = Vector2( 2.80807, 2.80807 )
+texture = ExtResource( 1 )
+vframes = 4
+hframes = 7
+frame = 22
+region_rect = Rect2( 21, 207, 20, 47 )
+
+[node name="Torso" type="Sprite" parent="Man"]
+texture = ExtResource( 3 )
+vframes = 4
+hframes = 7
+frame = 22
+
+[node name="Legs" type="Sprite" parent="Man"]
+texture = ExtResource( 2 )
+vframes = 4
+hframes = 7
+frame = 22
