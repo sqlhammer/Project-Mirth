@@ -19,3 +19,29 @@
 - 1 or more enemies, as cards, in center
 - Enemies can be side-by-side or cascading stacked with rotation for selecting
 
+## Skills
+
+
+### Combat Active
+
+
+### Combat Passive
+
+
+### Non-Combat Active
+
+
+### Non-Combat Passive
+
+
+## Stats
+
+
+### Combat
+
+
+### Non-Combative
+
+
+## Quests and Objectives
+

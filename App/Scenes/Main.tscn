@@ -1,19 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Characters/Male.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Characters/Target Dummy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://InteractionHUD/CombatHud.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Main.gd" type="Script" id=2]
 
 [node name="Main" type="Node"]
+script = ExtResource( 2 )
 
-[node name="Target Dummy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 513.795, 830.848 )
+[node name="CombatHUD" parent="." instance=ExtResource( 1 )]
 
-[node name="Male" parent="." instance=ExtResource( 1 )]
-position = Vector2( 91.1081, 106.139 )
-
-[node name="HUD" parent="." instance=ExtResource( 3 )]
-margin_left = 342.587
-margin_top = 40.8267
-margin_right = 605.587
-margin_bottom = 154.827
+[node name="Ticker" type="Timer" parent="."]
+wait_time = 0.5
+[connection signal="timeout" from="Ticker" to="." method="_on_Ticker_timeout"]
