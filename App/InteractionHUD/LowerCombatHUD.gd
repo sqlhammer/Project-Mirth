@@ -2,8 +2,10 @@ extends Node2D
 
 var normal = load("res://InteractionHUD/images/attack_button_normal.png")
 var hover = load("res://InteractionHUD/images/attack_button_hover.png")
-onready var TickObserver = get_parent().get_parent().TickObserver
-onready var SingleAbilityObserver = get_parent().get_parent().SingleAbilityObserver
+onready var Main = get_parent().get_parent()
+onready var TickObserver = Main.TickObserver
+onready var SingleAbilityObserver = Main.SingleAbilityObserver
+onready var CombatHUD = get_parent()
 
 var isBool = true
 var flash_count = 0
@@ -39,8 +41,8 @@ func unregister():
 
 
 func toggle_placeholder():
-	var is_visible = get_parent().get_node("PlaceHolderImage").visible
-	get_parent().get_node("PlaceHolderImage").visible = not is_visible
+	var image = CombatHUD.get_node("PlaceHolderImage")
+	image.visible = not image.visible
 
 func _on_SingleAbilityButton_pressed():
 	SingleAbilityObserver.trigger()
