@@ -1,6 +1,7 @@
 extends Node
 
-var Observer = load("res://Global/Observer.gd").new()
+var TickObserver = load("res://Global/Observer.gd").new()
+var SingleAbilityObserver = load("res://Global/Observer.gd").new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,4 +11,4 @@ func _process(delta):
 	pass
 
 func _on_Ticker_timeout():
-	Observer.tick()
+	TickObserver.trigger()
