@@ -1,48 +1,34 @@
 extends Node2D
 
-var normal = load("res://InteractionHUD/images/attack_button_normal.png")
-var hover = load("res://InteractionHUD/images/attack_button_hover.png")
 onready var Main = get_parent().get_parent()
 onready var TickObserver = Main.TickObserver
-onready var SingleAbilityObserver = Main.SingleAbilityObserver
+onready var AbilityTypeObserver = Main.AbilityTypeObserver
 onready var CombatHUD = get_parent()
+onready var Attack = load("res://InteractionHUD/Attack.gd").new()
 
-var isBool = true
-var flash_count = 0
+onready var Enemies = CombatHUD.Enemies
+onready var SelectedEnemy
+
+var attack_recharge_delay = 0
 
 func _ready():
-	TickObserver.register("attack",self,"tick")
-	SingleAbilityObserver.register("lowerHUD",self,"toggle_placeholder")
-
-func tick():
-	if flash_count == 10:
-		unregister()
+	Attack.init("basic")
+	$Attack/Charge.max_value = Attack.charge_time
 	
-	if isBool:
-		$Attack/TextureButton.set_normal_texture(normal)
-	else:
-		$Attack/TextureButton.set_normal_texture(hover)
+	TickObserver.subscribe("player_attack",self,"charge_tick",{})
 	
-	isBool = !isBool
-	flash_count = flash_count + 1
+	#get first enemy
+	for enemy in Enemies:
+		SelectedEnemy = Enemies[enemy]
+		break
 
-func unregister():
-	TickObserver.unregister("attack")
+func _on_Attack_Button_pressed():
+	Attack.attack(SelectedEnemy)
 
+func charge(time):
+	Attack.charge(time)
+	$Attack/Charge.value = Attack.current_charge_time
 
-
-
-
-
-
-
-
-
-
-
-func toggle_placeholder():
-	var image = CombatHUD.get_node("PlaceHolderImage")
-	image.visible = not image.visible
-
-func _on_SingleAbilityButton_pressed():
-	SingleAbilityObserver.trigger()
+func charge_tick():
+	var time = Main.get_node("Ticker").wait_time
+	charge(time)

@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://InteractionHUD/CombatHUD.gd" type="Script" id=1]
 [ext_resource path="res://InteractionHUD/UpperCombatHUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://InteractionHUD/LowerCombatHUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/male/BODY_male.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/clothing/LEGS_pants_greenish.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/clothing/TORSO_chain_armor_torso.png" type="Texture" id=6]
+[ext_resource path="res://NPCs/Enemy.gd" type="Script" id=7]
 
 [node name="CombatHUD" type="Node"]
 script = ExtResource( 1 )
@@ -12,13 +15,38 @@ script = ExtResource( 1 )
 
 [node name="LowerCombatHUD" parent="." instance=ExtResource( 3 )]
 
-[node name="PlaceHolderImage" type="Node2D" parent="."]
-visible = false
+[node name="Enemy1" type="Node2D" parent="."]
+script = ExtResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="PlaceHolderImage"]
-position = Vector2( 305.435, 365.728 )
-scale = Vector2( 3.50397, 3.90064 )
+[node name="Label" type="Label" parent="Enemy1"]
+margin_left = 238.0
+margin_top = 243.0
+margin_right = 432.0
+margin_bottom = 310.0
+text = "Health = "
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Enemy1"]
+position = Vector2( 333.122, 413.765 )
+scale = Vector2( 4.90967, 4.98032 )
 texture = ExtResource( 4 )
 vframes = 4
 hframes = 7
-frame = 20
+frame = 14
+
+[node name="Sprite2" type="Sprite" parent="Enemy1/Sprite"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 5 )
+vframes = 4
+hframes = 7
+frame = 14
+
+[node name="Sprite" type="Sprite" parent="Enemy1/Sprite"]
+texture = ExtResource( 6 )
+vframes = 4
+hframes = 7
+frame = 14
