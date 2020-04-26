@@ -1,12 +1,18 @@
 extends "NPC.gd"
 
-var health = 10
-var max_health = 10
-var defense = 0.2
+var Health = 10
+var Health_Max = 10
+var Defense = 0.2
 
 func _ready():
-	$Label.text = "Health = " + str(health)
+	display_health()
+	$Portrait.reset()
 
 func hit(unadjusted_damage):
-	health = health - (unadjusted_damage * (1-defense))
-	$Label.text = "Health = " + str(health)
+	Health = Health - (unadjusted_damage * (1-Defense))
+	display_health()
+
+func display_health():
+	$Portrait/Label.text =  Name + " Health = " + str(round(Health*100)/100)
+
+

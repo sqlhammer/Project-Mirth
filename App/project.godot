@@ -21,7 +21,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-CombatVariables="*res://Global/CombatVariables.gd"
+CombatVariables="res://Global/CombatVariables.gd"
+Resources="*res://Global/Resources.gd"
 
 [display]
 

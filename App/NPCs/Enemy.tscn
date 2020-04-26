@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/combat_dummy/BODY_animation.png" type="Texture" id=1]
+[ext_resource path="res://NPCs/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://NPCs/EnemyCard.gd" type="Script" id=3]
+[ext_resource path="res://Card/Card-background.png" type="Texture" id=4]
+
+[node name="Enemy" type="Control"]
+anchor_right = 0.43
+anchor_bottom = 0.375
+margin_right = -0.200012
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portrait" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="Card" type="Sprite" parent="Portrait"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Sprite" type="Sprite" parent="Portrait"]
+texture = ExtResource( 1 )
+centered = false
+hframes = 8
+
+[node name="Label" type="Label" parent="Portrait"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Test"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

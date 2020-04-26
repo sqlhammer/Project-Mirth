@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://InteractionHUD/LowerCombatHUD.gd" type="Script" id=1]
 [ext_resource path="res://InteractionHUD/images/attack_button_normal.png" type="Texture" id=2]
@@ -7,6 +7,14 @@
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.941176, 0.270588, 0.270588, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+
+[sub_resource type="StyleBoxFlat" id=5]
 
 [node name="LowerCombatHUD" type="Node2D"]
 script = ExtResource( 1 )
@@ -43,11 +51,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Attack"]
-margin_right = 64.0
-margin_bottom = 64.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 7.62939e-06
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Attack"
 align = 1
 valign = 1
@@ -69,7 +78,7 @@ margin_left = 14.2501
 margin_top = -32.0
 margin_right = 77.2501
 margin_bottom = -6.0
-custom_styles/fg = SubResource( 1 )
+custom_styles/fg = SubResource( 2 )
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -114,7 +123,7 @@ margin_left = 7.20016
 margin_top = -31.05
 margin_right = 70.2002
 margin_bottom = -5.05005
-custom_styles/fg = SubResource( 1 )
+custom_styles/fg = SubResource( 3 )
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -159,7 +168,7 @@ margin_left = 1.14999
 margin_top = -31.05
 margin_right = 64.15
 margin_bottom = -5.04999
-custom_styles/fg = SubResource( 1 )
+custom_styles/fg = SubResource( 4 )
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -203,7 +212,7 @@ margin_left = -0.690918
 margin_top = -31.05
 margin_right = 62.3091
 margin_bottom = -5.04999
-custom_styles/fg = SubResource( 1 )
+custom_styles/fg = SubResource( 5 )
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -232,4 +241,7 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="value_changed" from="Attack/Charge" to="." method="_on_Attack_Charge_value_changed"]
 [connection signal="pressed" from="Attack/TextureButton" to="." method="_on_Attack_Button_pressed"]
+[connection signal="value_changed" from="SingleAbility/Charge" to="." method="_on_Single_Ability_Charge_value_changed"]
+[connection signal="pressed" from="SingleAbility/TextureButton" to="." method="_on_Single_Ability_Button_pressed"]

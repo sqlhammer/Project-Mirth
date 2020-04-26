@@ -1,44 +1,52 @@
-extends Object
+extends Node
 
-var rand = RandomNumberGenerator.new()
-var min_damage
-var max_damage
-var charge_time
-var current_charge_time
+var Rand = RandomNumberGenerator.new()
+var Damage_Min
+var Damage_Max
+var Charge_Time
+var Charge_Time_Current
+var Ability_Type
 
-func init(type):
+func init(type,_progress):
+	Rand.randomize()
 	set_vars(type)
 
 func attack(enemy):
 	if is_instance_valid(enemy) and is_charged():
 		enemy.hit(get_unadjusted_damage())
-		current_charge_time = 0
+		Charge_Time_Current = 0
 
 func get_unadjusted_damage():
-	rand.randomize()
-	var damage = rand.randf_range(min_damage, max_damage)
+	var damage = Rand.randf_range(Damage_Min, Damage_Max)
 	return damage
 
 func charge(time):
-	if current_charge_time < charge_time:
-		current_charge_time = current_charge_time + time
+	if Charge_Time_Current < Charge_Time:
+		Charge_Time_Current = Charge_Time_Current + time
 
 func is_charged():
 	var is_charged = false
-	if current_charge_time >= charge_time:
+	if Charge_Time_Current >= Charge_Time:
 		is_charged = true
 	return is_charged
 
 #TODO: Make this enternal to the attack script
 func set_vars(type):
+	Ability_Type = type
+	
 	match type:
 		"basic":
-			min_damage = 1
-			max_damage = 5
-			charge_time = 2
-			current_charge_time = 2
+			Damage_Min = 1
+			Damage_Max = 5
+			Charge_Time = 2
+			Charge_Time_Current = 2
+		"heavy":
+			Damage_Min = 4
+			Damage_Max = 10
+			Charge_Time = 10
+			Charge_Time_Current = 10
 		_: #default
-			min_damage = 1
-			max_damage = 5
-			charge_time = 2
-			current_charge_time = 2
+			Damage_Min = 1
+			Damage_Max = 5
+			Charge_Time = 2
+			Charge_Time_Current = 2

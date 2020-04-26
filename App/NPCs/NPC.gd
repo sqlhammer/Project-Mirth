@@ -1,4 +1,6 @@
 extends Node
 
+var Name
+
 func _ready():
-	pass # Replace with function body.
+	Name = "Bad Guy"

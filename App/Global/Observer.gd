@@ -7,10 +7,10 @@ func trigger():
 		if not is_instance_valid(Subscribers[key]["instance"]):
 			misfire(key)
 			continue
-		Subscribers[key]["instance"].call(Subscribers[key]["method"])
+		Subscribers[key]["instance"].call(Subscribers[key]["method"],Subscribers[key]["args"])
 
-func subscribe(key, instance, method, args):
-	Subscribers[key] = {"instance":instance, "method":method, "args":args}
+func subscribe(instance, method, args):
+	Subscribers[instance.get_instance_id()] = {"instance":instance, "method":method, "args":args}
 
 func misfire(key):
 	unsubscribe(key)
