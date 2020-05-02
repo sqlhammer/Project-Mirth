@@ -2,9 +2,7 @@ extends Node2D
 
 ##### VARIABLES #####
 
-onready var Main = get_parent().get_parent()
-onready var Observer_Tick = Main.Observer_Tick
-onready var Observer_Ability_Type = Main.Observer_Ability_Type
+onready var Main = get_tree().get_root().get_node("Main")
 
 onready var Abilities = {}
 
@@ -23,8 +21,7 @@ func _ready():
 	heavy_attack.init("heavy",$SingleAbility/Charge)
 	Abilities["heavy_attack"] = heavy_attack
 	
-	Observer_Tick.subscribe(self,"charge_tick",{})
-	Observer_Ability_Type.subscribe(self,"print_type",{})
+	Main.connect("Observer_Tick", self, "charge_tick")
 
 
 ##### FUNCTIONS #####
@@ -40,7 +37,7 @@ func charge(instance,progress,time):
 	instance.charge(time)
 	progress.value = instance.Charge_Time_Current
 
-func charge_tick(_args):
+func charge_tick():
 	var time = Main.get_node("Ticker").wait_time
 	for ability in Abilities:
 		charge(Abilities[ability],Abilities[ability].Progress,time)

@@ -11,17 +11,13 @@
 
 extends Node
 
-var Observer_Tick = load("res://Global/Observer.gd").new()
-var Observer_Ability_Type = load("res://Global/ObserverAbilityType.gd").new()
+signal Observer_Tick
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Resources.Observers["Observer_Tick"] = Observer_Tick
-	Resources.Observers["Observer_Ability_Type"] = Observer_Ability_Type
-	Observer_Ability_Type.set_ability_type("punch")
 	$Ticker.start()
 
 func _on_Ticker_timeout():
 	Resources.Run_Time = Resources.Run_Time + $Ticker.wait_time
-	Observer_Tick.trigger()
+	emit_signal("Observer_Tick")
 

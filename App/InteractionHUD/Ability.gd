@@ -10,10 +10,7 @@ func init(type,progress):
 	Progress.max_value = Charge_Time
 
 func attack(enemy):
-	var observer = Resources.Observers["Observer_Ability_Type"]
-	if observer != null:
-		observer.set_ability_type(Type)
-	
+	#used to be to set ability type
 	.attack(enemy)
 
 func set_ability_type(type):
