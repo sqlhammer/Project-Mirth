@@ -1,13 +1,11 @@
-extends Node2D
+extends Control
 
 ##### VARIABLES #####
-
-onready var Main = get_tree().get_root().get_node("Main")
+onready var Main = @"/root/Main"
 
 onready var Abilities = {}
 
-onready var Combat_HUD = get_parent()
-onready var Enemies = Combat_HUD.Enemies
+onready var Enemies = Resources.Enemies
 onready var Selected_Enemy
 
 ##### PROCESS #####
@@ -21,7 +19,7 @@ func _ready():
 	heavy_attack.init("heavy",$SingleAbility/Charge)
 	Abilities["heavy_attack"] = heavy_attack
 	
-	Main.connect("Observer_Tick", self, "charge_tick")
+	Main.connect("Tick", self, "charge_tick")
 
 
 ##### FUNCTIONS #####

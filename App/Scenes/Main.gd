@@ -11,7 +11,7 @@
 
 extends Node
 
-signal Observer_Tick
+signal Tick
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,5 +19,5 @@ func _ready():
 
 func _on_Ticker_timeout():
 	Resources.Run_Time = Resources.Run_Time + $Ticker.wait_time
-	emit_signal("Observer_Tick")
+	emit_signal("Tick")
 

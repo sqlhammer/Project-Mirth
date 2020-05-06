@@ -16,14 +16,19 @@ bg_color = Color( 0.941176, 0.270588, 0.270588, 1 )
 
 [sub_resource type="StyleBoxFlat" id=5]
 
-[node name="LowerCombatHUD" type="Node2D"]
+[node name="LowerCombatHUD" type="Container"]
+margin_right = 640.0
+margin_bottom = 100.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Attack" type="Control" parent="."]
 margin_left = 125.9
-margin_top = 885.0
+margin_top = 45.0
 margin_right = 189.9
-margin_bottom = 949.0
+margin_bottom = 109.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -53,10 +58,10 @@ __meta__ = {
 [node name="Label" type="Label" parent="Attack"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 7.62939e-06
+margin_bottom = -3.05176e-05
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 text = "Attack"
 align = 1
 valign = 1
@@ -66,9 +71,9 @@ __meta__ = {
 
 [node name="SingleAbility" type="Control" parent="."]
 margin_left = 201.0
-margin_top = 885.0
+margin_top = 45.0
 margin_right = 291.0
-margin_bottom = 949.0
+margin_bottom = 109.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -111,9 +116,9 @@ __meta__ = {
 
 [node name="MultiAbility" type="Control" parent="."]
 margin_left = 305.9
-margin_top = 885.0
+margin_top = 45.0
 margin_right = 385.9
-margin_bottom = 949.0
+margin_bottom = 109.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -156,9 +161,9 @@ __meta__ = {
 
 [node name="Support" type="Control" parent="."]
 margin_left = 398.4
-margin_top = 885.0
+margin_top = 45.0
 margin_right = 462.4
-margin_bottom = 949.0
+margin_bottom = 109.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -200,9 +205,9 @@ __meta__ = {
 
 [node name="Item" type="Control" parent="."]
 margin_left = 474.341
-margin_top = 885.0
+margin_top = 45.0
 margin_right = 538.341
-margin_bottom = 949.0
+margin_bottom = 109.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -241,7 +246,3 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="value_changed" from="Attack/Charge" to="." method="_on_Attack_Charge_value_changed"]
-[connection signal="pressed" from="Attack/TextureButton" to="." method="_on_Attack_Button_pressed"]
-[connection signal="value_changed" from="SingleAbility/Charge" to="." method="_on_Single_Ability_Charge_value_changed"]
-[connection signal="pressed" from="SingleAbility/TextureButton" to="." method="_on_Single_Ability_Button_pressed"]

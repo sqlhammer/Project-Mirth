@@ -1,6 +1,5 @@
 extends Node
 
-var Enemies = {}
 
 #necessary so it will initialize prior to child nodes
 #need to understand this recursive logic more because I am setting a pointer
@@ -15,5 +14,5 @@ func spawn_enemy():
 	scene_instance.set_name("Enemy1")
 	scene_instance.visible = true
 	self.add_child(scene_instance)
-	Enemies = {"Enemy1":scene_instance}
-	$LowerCombatHUD.Selected_Enemy = scene_instance
+	Resources.Enemies = {"Enemy1":scene_instance}
+	$HUD/LowerCombatHUD.Selected_Enemy = scene_instance
