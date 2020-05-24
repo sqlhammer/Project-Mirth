@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Images/rpgcritters2.png" type="Texture" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/HammersmithOne-16.tres" type="DynamicFont" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 47.3272
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 64, 201, 24, 19 )
+
+[node name="Label" type="Label" parent="Sprite"]
+margin_left = -46.0384
+margin_top = -42.8554
+margin_right = 44.9616
+margin_bottom = -20.8554
+custom_fonts/font = ExtResource( 3 )
+text = "test"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

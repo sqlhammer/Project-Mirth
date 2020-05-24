@@ -1,0 +1,141 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/HammersmithOne-72.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Fonts/HammersmithOne-32.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Lobby.gd" type="Script" id=3]
+
+[node name="Lobby" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="timerQueue" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1021.0
+margin_bottom = 597.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxLeft" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 300.0
+margin_bottom = 597.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labelPlayer" type="Label" parent="HBoxContainer/VBoxLeft"]
+margin_right = 300.0
+margin_bottom = 91.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Players"
+align = 1
+valign = 1
+
+[node name="Players" type="ItemList" parent="HBoxContainer/VBoxLeft"]
+margin_top = 95.0
+margin_right = 300.0
+margin_bottom = 597.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+
+[node name="VBoxCenter" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 315.0
+margin_right = 693.0
+margin_bottom = 597.0
+custom_constants/separation = 15
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxCenter"]
+margin_right = 378.0
+margin_bottom = 91.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.32549, 0.831373, 0.101961, 1 )
+text = "Lobby"
+align = 1
+valign = 1
+
+[node name="Join" type="Button" parent="HBoxContainer/VBoxCenter"]
+margin_top = 106.0
+margin_right = 378.0
+margin_bottom = 203.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Join"
+
+[node name="StartGame" type="Button" parent="HBoxContainer/VBoxCenter"]
+visible = false
+margin_top = 218.0
+margin_right = 378.0
+margin_bottom = 315.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Start Game"
+
+[node name="Create" type="Button" parent="HBoxContainer/VBoxCenter"]
+margin_top = 218.0
+margin_right = 378.0
+margin_bottom = 315.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Create"
+
+[node name="Alias" type="Label" parent="HBoxContainer/VBoxCenter"]
+margin_top = 330.0
+margin_right = 378.0
+margin_bottom = 421.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "Player Alias"
+align = 1
+valign = 1
+
+[node name="textAlias" type="TextEdit" parent="HBoxContainer/VBoxCenter"]
+margin_top = 436.0
+margin_right = 378.0
+margin_bottom = 486.0
+rect_min_size = Vector2( 0, 50 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "<my alias>"
+
+[node name="VBoxRight" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 708.0
+margin_right = 1020.0
+margin_bottom = 597.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="labelQueue" type="Label" parent="HBoxContainer/VBoxRight"]
+margin_right = 312.0
+margin_bottom = 91.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "In Queue"
+align = 1
+valign = 1
+
+[node name="Queue" type="ItemList" parent="HBoxContainer/VBoxRight"]
+margin_top = 95.0
+margin_right = 312.0
+margin_bottom = 597.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+[connection signal="timeout" from="timerQueue" to="." method="_on_timerQueue_timeout"]
+[connection signal="pressed" from="HBoxContainer/VBoxCenter/Join" to="." method="_on_Join_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxCenter/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxCenter/Create" to="." method="_on_Create_pressed"]
