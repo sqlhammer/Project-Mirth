@@ -15,9 +15,10 @@ signal Tick
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Ticker.wait_time = Resources.TickTime
 	$Ticker.start()
 
 func _on_Ticker_timeout():
-	Resources.Run_Time = Resources.Run_Time + $Ticker.wait_time
+	Resources.Run_Time = Resources.Run_Time + Resources.TickTime
 	emit_signal("Tick")
 

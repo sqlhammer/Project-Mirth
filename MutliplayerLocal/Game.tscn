@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Fonts/HammersmithOne-72.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Game.gd" type="Script" id=2]
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="timerCountDown" type="Timer" parent="."]
+one_shot = true
+
+[node name="labelCountDown" type="Label" parent="."]
+margin_left = 414.0
+margin_top = 248.0
+margin_right = 618.0
+margin_bottom = 339.0
+custom_fonts/font = ExtResource( 1 )
+text = "Ready"
+__meta__ = {
+"_edit_use_anchors_": false
+}

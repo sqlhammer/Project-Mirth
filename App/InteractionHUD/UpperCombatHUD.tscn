@@ -1,8 +1,9 @@
 [gd_scene format=2]
 
-[node name="UpperCombatHUD" type="Container"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="UpperCombatHUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 0.208
+margin_bottom = 0.320007
 __meta__ = {
 "_edit_use_anchors_": false
 }

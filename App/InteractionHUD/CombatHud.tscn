@@ -3,7 +3,7 @@
 [ext_resource path="res://InteractionHUD/UpperCombatHUD.gd" type="Script" id=1]
 [ext_resource path="res://InteractionHUD/UpperCombatHUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://InteractionHUD/LowerCombatHUD.tscn" type="PackedScene" id=3]
-[ext_resource path="res://InteractionHUD/CardCarousel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://InteractionHUD/Carousel.tscn" type="PackedScene" id=5]
 
 [node name="CombatHUD" type="Control"]
 anchor_right = 1.0
@@ -14,31 +14,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HUD" type="GridContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="HUD" type="VBoxContainer" parent="."]
+margin_right = 640.0
+margin_bottom = 960.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="UpperCombatHUD" parent="HUD" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_right = 640.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 0, 200 )
 
-[node name="Carousel" parent="HUD" instance=ExtResource( 4 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 0.0
+[node name="CarouselSpacer" type="Control" parent="HUD"]
 margin_top = 204.0
 margin_right = 640.0
-margin_bottom = 831.0
-rect_min_size = Vector2( 0, 350 )
-size_flags_horizontal = 3
-size_flags_vertical = 3
+margin_bottom = 814.0
+rect_min_size = Vector2( 0, 610 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Carousel" parent="HUD" instance=ExtResource( 5 )]
 
 [node name="LowerCombatHUD" parent="HUD" instance=ExtResource( 3 )]
-margin_top = 835.0
-margin_bottom = 960.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 818.0
+margin_right = 640.0
+margin_bottom = 943.0
 rect_min_size = Vector2( 0, 125 )
 size_flags_horizontal = 3

@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Lobby.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/HammersmithOne-72.tres" type="DynamicFont" id=2]
+
+[node name="Lobby" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1023.0
+margin_bottom = 599.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UserList" type="ItemList" parent="HBoxContainer"]
+margin_right = 509.0
+margin_bottom = 599.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+auto_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 513.0
+margin_right = 1023.0
+margin_bottom = 599.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LobbyLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer"]
+margin_right = 510.0
+margin_bottom = 452.0
+rect_min_size = Vector2( 200, 85 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Lobby[/center]"
+text = "Lobby"
+scroll_active = false
+
+[node name="StartGame" type="Button" parent="HBoxContainer/VBoxContainer"]
+visible = false
+margin_top = 355.0
+margin_right = 510.0
+margin_bottom = 452.0
+custom_fonts/font = ExtResource( 2 )
+text = "Start Game"
+
+[node name="TerminateGame2" type="Button" parent="HBoxContainer/VBoxContainer"]
+visible = false
+margin_top = 355.0
+margin_right = 564.0
+margin_bottom = 452.0
+custom_fonts/font = ExtResource( 2 )
+text = "Terminate Game"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 502.0
+margin_right = 510.0
+margin_bottom = 599.0
+custom_constants/separation = 50
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Join" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 41.0
+margin_right = 185.0
+margin_bottom = 97.0
+custom_fonts/font = ExtResource( 2 )
+text = "Join"
+
+[node name="Create" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 235.0
+margin_right = 469.0
+margin_bottom = 97.0
+custom_fonts/font = ExtResource( 2 )
+text = "Create"
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/TerminateGame2" to="." method="_on_TerminateGame_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/Join" to="." method="_on_Join_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer/Create" to="." method="_on_Create_pressed"]

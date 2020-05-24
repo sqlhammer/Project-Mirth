@@ -1,7 +1,6 @@
 extends Control
 
 ##### VARIABLES #####
-onready var Main = @"/root/Main"
 
 onready var Abilities = {}
 
@@ -19,7 +18,7 @@ func _ready():
 	heavy_attack.init("heavy",$SingleAbility/Charge)
 	Abilities["heavy_attack"] = heavy_attack
 	
-	Main.connect("Tick", self, "charge_tick")
+	var _result = Signals.connect("Tick", self, "charge_tick")
 
 
 ##### FUNCTIONS #####
@@ -36,7 +35,7 @@ func charge(instance,progress,time):
 	progress.value = instance.Charge_Time_Current
 
 func charge_tick():
-	var time = Main.get_node("Ticker").wait_time
+	var time = Resources.TickTime
 	for ability in Abilities:
 		charge(Abilities[ability],Abilities[ability].Progress,time)
 
