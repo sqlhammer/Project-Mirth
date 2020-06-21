@@ -1,0 +1,275 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://assets/LPC Base Assets/sprites/monsters/bat.png" type="Texture" id=1]
+[ext_resource path="res://enemies/bat.gd" type="Script" id=2]
+[ext_resource path="res://common/hurt_box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/ouch.png" type="Texture" id=4]
+[ext_resource path="res://assets/blender-volumetric-particles-effects/effect-images/explosion/magic/0028.png" type="Texture" id=5]
+[ext_resource path="res://assets/blender-volumetric-particles-effects/effect-images/explosion/magic/0001.png" type="Texture" id=6]
+[ext_resource path="res://assets/blender-volumetric-particles-effects/effect-images/explosion/magic/0012.png" type="Texture" id=7]
+[ext_resource path="res://assets/blender-volumetric-particles-effects/effect-images/explosion/magic/0024.png" type="Texture" id=8]
+[ext_resource path="res://assets/blender-volumetric-particles-effects/effect-images/explosion/magic/0026.png" type="Texture" id=9]
+[ext_resource path="res://assets/blender-volumetric-particles-effects/effect-images/explosion/magic/0008.png" type="Texture" id=10]
+[ext_resource path="res://assets/blender-volumetric-particles-effects/effect-images/explosion/magic/0030.png" type="Texture" id=11]
+[ext_resource path="res://assets/blender-volumetric-particles-effects/effect-images/explosion/magic/0016.png" type="Texture" id=12]
+[ext_resource path="res://assets/blender-volumetric-particles-effects/effect-images/explosion/magic/0004.png" type="Texture" id=13]
+[ext_resource path="res://assets/blender-volumetric-particles-effects/effect-images/explosion/magic/0020.png" type="Texture" id=14]
+[ext_resource path="res://fonts/HammersmithOne-8.tres" type="DynamicFont" id=15]
+[ext_resource path="res://common/aggression_box.tscn" type="PackedScene" id=16]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Die"
+tracks/0/type = "value"
+tracks/0/path = NodePath("DeathSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 5 ), ExtResource( 11 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DeathSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HealthBar:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:isInvincible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:isAggressive")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("HurtSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:isInvincible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "_fly_in_place"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 7.43681
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 7.73155
+
+[node name="Bat" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Die = SubResource( 1 )
+anims/FlyDown = SubResource( 2 )
+anims/FlyLeft = SubResource( 3 )
+anims/FlyRight = SubResource( 4 )
+anims/FlyUp = SubResource( 5 )
+anims/Hurt = SubResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 4
+hframes = 3
+frame = 6
+
+[node name="AggressionBox" parent="." instance=ExtResource( 16 )]
+
+[node name="HurtBox" parent="." instance=ExtResource( 3 )]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource( 8 )
+
+[node name="HurtSprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( -13.4112, -17.5135 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+
+[node name="DeathSprite" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 6 )
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
+margin_left = -16.0
+margin_top = 14.0
+margin_right = 16.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_shape_entered" from="HurtBox" to="." method="_on_HurtBox_area_shape_entered"]
+
+[editable path="HurtBox"]
