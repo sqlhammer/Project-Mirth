@@ -1,2 +1,2 @@
 # Project-Mirth
-A Godot project
+A collection of Godot projects for sharing and version history.
