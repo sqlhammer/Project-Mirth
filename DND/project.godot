@@ -22,12 +22,18 @@ config/icon="res://icon.png"
 [autoload]
 
 StageManager="*res://autoload/stage-manager.gd"
+GameManager="*res://autoload/game_manager.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
+window/size/resizable=false
 
 [input]
 
@@ -68,12 +74,12 @@ attack_basic={
 
 [layer_names]
 
-2d_render/layer_1="World"
-2d_render/layer_2="Player"
-2d_render/layer_3="Enemy"
-2d_render/layer_4="PlayerHurtBox"
-2d_render/layer_5="EnemyHurtBox"
-2d_render/layer_6="Viewport"
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="PlayerHurtBox"
+2d_physics/layer_5="EnemyHurtBox"
+2d_physics/layer_6="Viewport"
 
 [rendering]
 
